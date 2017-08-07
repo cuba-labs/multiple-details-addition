@@ -1,0 +1,4 @@
+-- begin SAMPLE_DETAIL
+alter table SAMPLE_DETAIL add constraint FK_SAMPLE_DETAIL_MASTER foreign key (MASTER_ID) references SAMPLE_MASTER(ID)^
+create index IDX_SAMPLE_DETAIL_MASTER on SAMPLE_DETAIL (MASTER_ID)^
+-- end SAMPLE_DETAIL

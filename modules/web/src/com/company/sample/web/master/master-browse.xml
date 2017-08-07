@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.sample.web.master.MasterBrowse"
+        focusComponent="mastersTable"
+        lookupComponent="mastersTable"
+        messagesPack="com.company.sample.web.master">
+    <dsContext>
+        <collectionDatasource id="mastersDs"
+                              class="com.company.sample.entity.Master"
+                              view="_local">
+            <query>
+                <![CDATA[select e from sample$Master e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="mastersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="mastersTable"
+                datasource="mastersDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="mastersTable"
+               multiselect="true"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="addDetails"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="mastersDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="mastersTable.create"/>
+                <button id="editBtn"
+                        action="mastersTable.edit"/>
+                <button id="removeBtn"
+                        action="mastersTable.remove"/>
+                <button id="addDetailsBtn"
+                        action="mastersTable.addDetails"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

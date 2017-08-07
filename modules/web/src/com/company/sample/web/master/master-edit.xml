@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.sample.web.master.MasterEdit"
+        datasource="masterDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.sample.web.master">
+    <dsContext>
+        <datasource id="masterDs"
+                    class="com.company.sample.entity.Master"
+                    view="master-edit">
+            <collectionDatasource id="detailsDs"
+                                  property="details"/>
+        </datasource>
+    </dsContext>
+    <dialogMode width="AUTO"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="masterDs">
+            <column width="250px">
+                <field property="name"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="detailsBox"
+                  caption="msg://com.company.sample.entity/Master.details">
+            <table id="detailsTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"
+                            openType="DIALOG"/>
+                    <action id="edit"
+                            openType="DIALOG"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="description"/>
+                </columns>
+                <rows datasource="detailsDs"/>
+                <buttonsPanel>
+                    <button action="detailsTable.create"/>
+                    <button action="detailsTable.edit"/>
+                    <button action="detailsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
